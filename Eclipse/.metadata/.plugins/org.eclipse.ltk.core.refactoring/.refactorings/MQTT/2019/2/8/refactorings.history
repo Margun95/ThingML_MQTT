@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;MQTT&apos;&#x0D;&#x0A;- Original project: &apos;MQTT&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     paho82111097717187-tcplocalhost1883&#x0D;&#x0A;     paho83738985931777-tcplocalhost1883&#x0D;&#x0A;     paho85112383542138-tcplocalhost1883" description="Delete elements" element1="paho82111097717187-tcplocalhost1883" element2="paho85112383542138-tcplocalhost1883" element3="paho83738985931777-tcplocalhost1883" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1550611128816" subPackages="false" version="1.0"/>
+</session>

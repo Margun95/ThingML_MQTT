@@ -1,0 +1,40 @@
+2019-02-19 13:03:38,363 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-02-19 13:06:28,484 [Worker-8: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: group:MQTT:0.0.1-SNAPSHOT @ C:\Users\Martin\eclipse-workspace\MQTT\pom.xml.
+2019-02-19 13:06:28,973 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:06:28,973 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:06:28,977 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:06:28,977 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
+2019-02-19 13:06:30,071 [Worker-0: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: group:MQTT:0.0.1-SNAPSHOT @ C:\Users\Martin\eclipse-workspace\MQTT\pom.xml.
+2019-02-19 13:06:32,658 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:06:32,658 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:06:32,661 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:06:32,661 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
+2019-02-19 13:07:20,367 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2019-02-19 13:08:55,416 [Worker-0: Launching Room1wMQTT] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Martin\eclipse-workspace\roomX1
+2019-02-19 13:08:55,417 [Worker-0: Launching Room1wMQTT] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install exec:java
+2019-02-19 13:09:49,423 [Worker-0: Launching Room1wMQTT] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Martin\eclipse-workspace\roomX1\thingml-gen\java\CPS
+2019-02-19 13:09:49,423 [Worker-0: Launching Room1wMQTT] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install exec:java
+2019-02-19 13:10:26,033 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2019-02-19 13:14:43,632 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2019-02-19 13:15:54,515 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:15:54,515 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:15:54,525 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:15:54,531 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
+2019-02-19 13:16:12,453 [Worker-14: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:16:12,453 [Worker-14: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:16:12,460 [Worker-14: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:16:12,466 [Worker-14: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
+2019-02-19 13:17:46,143 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:17:46,143 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:17:46,151 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:17:46,158 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
+2019-02-19 13:17:55,571 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:17:55,571 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:17:55,578 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:17:55,587 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
+2019-02-19 13:18:06,287 [Worker-4: Launching Room1wMQTT] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Martin\eclipse-workspace\roomX1\thingml-gen\java\CPS
+2019-02-19 13:18:06,288 [Worker-4: Launching Room1wMQTT] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install exec:java
+2019-02-19 13:18:48,941 [Worker-4: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:18:48,950 [Worker-4: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\main\resources
+2019-02-19 13:18:48,958 [Worker-4: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-02-19 13:18:48,958 [Worker-4: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Martin\eclipse-workspace\MQTT\src\test\resources
