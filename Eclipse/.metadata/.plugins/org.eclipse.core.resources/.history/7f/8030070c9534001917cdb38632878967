@@ -1,0 +1,92 @@
+/* ThingML Framework */
+
+// Base datatypes
+import "datatypes.thingml"
+
+/* PSM must be included */
+import "pim_messages.thingml"
+
+thing PIM includes SwitchMsg, MotionMsg,ThermometerMsg
+@maven_dep "<dependency><groupId>org.eclipse.paho</groupId><artifactId>org.eclipse.paho.client.mqttv3</artifactId><version>1.2.0</version></dependency>"
+{
+	provided port human_input {
+		receives SwitchOn, SwitchOff
+	}
+	provided port Motions{
+		receives MotionOn
+	}
+	provided port Temprature{
+		receives Temp
+	}
+	statechart PIM_behavior init Init {
+		state Init {
+			transition -> Init
+			event snsr:human_input?SwitchOn
+			action do
+			`MqttSubscriber.sendComand("tcp://localhost:1883","state/light/1", "ON");`
+			end
+			
+			transition -> Init
+			event snsr:human_input?SwitchOff
+			action do
+			`MqttSubscriber.sendComand("tcp://localhost:1883","state/light/1", "OFF");`
+			end
+			
+			transition -> Init
+			event mo:Motions?MotionOn
+			action do
+			`MqttSubscriber.sendComand("tcp://localhost:1883","state/light/1", "ON");`
+			end
+			
+			transition -> Init
+			event temp:Temprature?Temp
+			action do
+			``
+			end
+		}
+	}
+}
+
+thing MotionDetectors includes MqttSetup, MotionMsg{
+	provided port setup {
+		receives StartListen
+	}
+	required port Motions{
+		sends MotionOn, MotionOff
+	}
+	statechart MotionDetector_behavior init Init {
+		state Init {
+			transition -> Init
+			event snsr:setup?StartListen
+			action do
+				`new MqttSubscriber().subTo("tcp://localhost:1883","motion/1", this::sendMotionOn_via_Motions);`
+			end
+		}
+	}
+}
+
+thing Thermometers includes MqttSetup, ThermometerMsg{
+	provided port setup {
+		receives StartListen
+	}
+	required port Temprature{
+		sends Temp
+	}
+	statechart MotionDetector_behavior init Init {
+		state Init {
+			transition -> Init
+			event snsr:setup?StartListen
+			action do
+				`new MqttSubscriber().subTo("tcp://localhost:1883","temp/1", this::sendTemp_via_Temprature);`
+			end
+		}
+	}
+}
+
+thing Display includes ThermometerMsg, MotionMsg 
+@mock "true"
+{	provided port Get{
+		receives Temp, MotionOn, MotionOff
+	}
+}
+
