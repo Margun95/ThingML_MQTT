@@ -1,0 +1,23 @@
+/* This file contains message and port definitions for the PIM communication */
+
+import "datatypes.thingml"
+
+
+thing fragment SwitchMsg{
+	message SwitchOn(sid:Integer);
+	message SwitchOff(sid:Integer);
+}
+
+thing fragment MqttSetup{//Setup for MQTT listener
+	message StartListen(ch:String,mid:Integer)//starts listener on channel ch
+}
+
+thing fragment MotionMsg{
+	message MotionOn(mid:Integer)
+	message MotionOff(mid:Integer)
+}
+
+thing fragment ThermometerMsg{
+	message Temp(temp:Integer)
+}
+

@@ -1,0 +1,218 @@
+thing PIM includes SwitchMsg , MotionMsg , ThermometerMsg @maven_dep `<dependency><groupId>org.eclipse.paho</groupId><artifactId>org.eclipse.paho.client.mqttv3</artifactId><version>1.2.0</version></dependency>` {
+	provided port human_input {
+		receives SwitchOn receives SwitchOff
+	}
+	provided port Motions {
+		receives MotionOn
+	}
+	provided port Temprature {
+		receives Temp
+	}
+	statechart PIM_behavior init Init {
+		state Init {
+			transition -> Init
+			event snsr : human_input?SwitchOn
+			action do
+			`MqttSubscriber.sendComand("tcp://localhost:1883","state/light/1", "ON");`
+			end
+			transition -> Init
+			event snsr : human_input?SwitchOff
+			action do
+			`MqttSubscriber.sendComand("tcp://localhost:1883","state/light/1", "OFF");`
+			end
+			transition -> Init
+			event mo : Motions?MotionOn
+			action do
+			`MqttSubscriber.sendComand("tcp://localhost:1883","state/light/1", "ON");`
+			end
+			transition -> Init
+			event temp : Temprature?Temp
+			action do
+			``
+			end
+		}
+	}
+}
+thing MotionDetectors includes MqttSetup , MotionMsg {
+	provided port setup {
+		receives StartListen
+	}
+	required port Motions {
+		sends MotionOn sends MotionOff
+	}
+	statechart MotionDetector_behavior init Init {
+		state Init {
+			transition -> Init
+			event snsr : setup?StartListen
+			action do
+			`new MqttSubscriber().subTo("tcp://localhost:1883","motion/1", this::sendMotionOn_via_Motions);`
+			end
+		}
+	}
+}
+thing Thermometers includes MqttSetup , ThermometerMsg {
+	provided port setup {
+		receives StartListen
+	}
+	required port Temprature {
+		sends Temp
+	}
+	statechart MotionDetector_behavior init Init {
+		state Init {
+			transition -> Init
+			event snsr : setup?StartListen
+			action do
+			`new MqttSubscriber().subTo("tcp://localhost:1883","motion/1", this::sendTemp_via_Temprature);`
+			end
+		}
+	}
+}
+thing Display includes ThermometerMsg , MotionMsg @mock `true` {
+	provided port Get {
+		receives Temp receives MotionOn receives MotionOff
+	}
+}
+thing Human includes SwitchMsg , MqttSetup @mock `true` {
+	required port send_cmd {
+		sends SwitchOn sends SwitchOff sends StartListen
+	}
+}
+datatype Byte<1>
+	@type_checker `Integer`
+	@c_type `uint8_t`
+	@c_byte_size `1`
+	@java_type `byte`
+	@java_primitive `true`
+	@scala_type `Byte`
+	@SenML_type `Double`
+datatype Boolean<1>
+	@type_checker `Boolean`
+	@c_type `uint8_t`
+	@c_byte_size `2`
+	@java_type `boolean`
+	@java_primitive `true`
+	@scala_type `Boolean`
+	@SenML_type `Boolean`
+datatype Integer<2>
+	@type_checker `Integer`
+	@c_type `int`
+	@c_byte_size `2`
+	@java_type `short`
+	@java_primitive `true`
+	@scala_type `Short`
+	@SenML_type `Double`
+	@ros_type `int16`
+datatype UInt8<1>
+	@type_checker `Integer`
+	@c_type `uint8_t`
+	@c_byte_size `1`
+	@java_type `byte`
+	@java_primitive `true`
+	@scala_type `Byte`
+	@SenML_type `Double`
+datatype Int8<1>
+	@type_checker `Integer`
+	@c_type `int8_t`
+	@c_byte_size `1`
+	@java_type `byte`
+	@java_primitive `true`
+	@scala_type `Byte`
+	@SenML_type `Double`
+datatype UInt16<2>
+	@type_checker `Integer`
+	@c_type `uint16_t`
+	@c_byte_size `2`
+	@java_type `short`
+	@java_primitive `true`
+	@scala_type `Short`
+	@SenML_type `Double`
+datatype Int16<2>
+	@type_checker `Integer`
+	@c_type `int`
+	@c_byte_size `2`
+	@java_type `short`
+	@java_primitive `true`
+	@scala_type `Short`
+	@SenML_type `Double`
+datatype Long<4>
+	@type_checker `Integer`
+	@c_type `long`
+	@c_byte_size `4`
+	@java_type `int`
+	@java_primitive `true`
+	@scala_type `Int`
+	@SenML_type `Double`
+datatype ULong<4>
+	@type_checker `Integer`
+	@c_type `unsigned long`
+	@c_byte_size `4`
+	@java_type `int`
+	@java_primitive `true`
+	@scala_type `Int`
+	@SenML_type `Double`
+datatype Double<4>
+	@type_checker `Real`
+	@c_type `double`
+	@c_byte_size `4`
+	@java_type `float`
+	@java_primitive `true`
+	@scala_type `Float`
+	@SenML_type `Double`
+datatype Char<1>
+	@type_checker `String`
+	@c_type `char`
+	@c_byte_size `1`
+	@java_type `char`
+	@js_type `char`
+	@java_primitive `true`
+	@scala_type `Character`
+	@SenML_type `String`
+object String
+	@type_checker `String`
+	@c_type `char *`
+	@c_byte_size `*`
+	@java_type `String`
+	@js_type `String`
+	@SenML_type `String`
+enumeration DigitalState
+	@type_checker `Integer`
+	@java_type `byte`
+	@java_primitive `true`
+	@scala_type `Byte`
+	@c_byte_size `1`
+	@c_type `uint8_t`
+	{
+	LOW @enum_val `0`
+	HIGH @enum_val `1`
+}
+datatype LongLong<8>
+	@type_checker `Integer`
+	@c_type `long long`
+	@c_byte_size `8`
+	@java_type `long`
+	@java_primitive `true`
+thing fragment SwitchMsg {
+	message SwitchOn(sid : Integer)
+	message SwitchOff(sid : Integer)
+}
+thing fragment MqttSetup {
+	message StartListen(ch : String, mid : Integer)
+}
+thing fragment MotionMsg {
+	message MotionOn(mid : Integer)
+	message MotionOff(mid : Integer)
+}
+thing fragment ThermometerMsg {
+	message Temp(temp : Integer)
+}
+configuration CPS {
+	instance pim : PIM
+	instance myself : Human
+	instance motion : MotionDetectors
+	instance term : Thermometers
+	connector myself.send_cmd => pim . human_input
+	connector myself.send_cmd => motion . setup
+	connector myself.send_cmd => term . setup
+	connector motion.Motions => pim . Motions
+	connector term.Temprature => pim . Temprature
+}

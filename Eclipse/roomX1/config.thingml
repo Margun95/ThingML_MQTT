@@ -1,0 +1,22 @@
+import "pim.thingml"
+import "io.thingml"
+
+configuration CPS {
+	
+	instance pim:PIM
+	
+	instance myself:Human
+	
+	instance motion:MotionDetectors
+	instance term:Thermometers
+	
+	// HMI
+	connector myself.send_cmd => pim.human_input
+	connector myself.send_cmd => motion.setup
+	connector myself.send_cmd => term.setup
+	
+	
+	connector motion.Motions => pim.Motions
+	connector term.Temprature => pim.Temprature
+	
+}
